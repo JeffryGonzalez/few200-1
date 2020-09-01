@@ -3,16 +3,40 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TodoComponent } from './containers/todo/todo.component';
+import { TodoListComponent } from './components/todos/todo-list/todo-list.component';
+import { TodoEntryComponent } from './components/todos/todo-entry/todo-entry.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NavComponent } from './components/nav/nav.component';
+import { CommunicationsComponent } from './containers/communications/communications.component';
+import { LhsComponent } from './components/communications/lhs/lhs.component';
+import { RhsComponent } from './components/communications/rhs/rhs.component';
+import { CommunicationsService } from './services/communications.service';
+import { CounterComponent } from './containers/counter/counter.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers } from './reducers';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodoComponent,
+    TodoListComponent,
+    TodoEntryComponent,
+    DashboardComponent,
+    NavComponent,
+    CommunicationsComponent,
+    LhsComponent,
+    RhsComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument()
   ],
-  providers: [],
+  providers: [CommunicationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
