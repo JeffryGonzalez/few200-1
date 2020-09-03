@@ -16,7 +16,14 @@ import { CounterComponent } from './containers/counter/counter.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './reducers';
-
+import { EffectsModule } from '@ngrx/effects';
+import { CounterEffects } from './effects/counter.effects';
+import { MediaModule } from './features/media/media.module';
+import { GiftsModule } from './features/gifts/gifts.module';
+import { ListUpcomingComponent } from './features/gifts/list-upcoming/list-upcoming.component';
+import { EntryComponent } from './features/gifts/entry/entry.component';
+import { ListPastComponent } from './features/gifts/list-past/list-past.component';
+import { GiftsComponent } from './features/gifts/gifts.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,9 +39,12 @@ import { reducers } from './reducers';
   ],
   imports: [
     BrowserModule,
+    MediaModule,
+    GiftsModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([CounterEffects]),
   ],
   providers: [CommunicationsService],
   bootstrap: [AppComponent]
